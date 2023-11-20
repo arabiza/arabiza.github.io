@@ -67,6 +67,13 @@
             border-color: #4caf50;
         }
 
+        input[type="text"] {
+            padding: 8px;
+            margin-bottom: 12px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
         input[type="submit"] {
             background-color: #4caf50;
             color: #fff;
@@ -95,7 +102,7 @@
     
     <form id="quizForm" action="javascript:void(0);" onsubmit="checkResults();">
         <div class="question">
-            <p>1. На втором курсе мы смотрели фильм у тебя дома на Камышке и пили вино. Кажется, это было 8-10 января. Какое вино мы пили?</p>
+            <p>1. На втором курсе мы смотрели фильм у тебя дома на Камышке и пили вино. Кажется это было 8-10 января. Какое вино мы пили?</p>
             <div class="options">
                 <label>
                     <input type="radio" name="wine" value="a">
@@ -143,9 +150,14 @@
                 </label>
                 <label>
                     <input type="radio" name="camp" value="c">
-                    <span>На странице нашей главной вожатой (вроде Наталья)</span>
+                    <span>На странице Нашей главной вожатой (Наталья)</span>
                 </label>
             </div>
+        </div>
+
+        <div class="question">
+            <p>4. Введите кодовое слово (мой российский номер телефона без пробелов, начиная с 8):</p>
+            <input type="text" name="code" placeholder="Введи мой номер телефона">
         </div>
 
         <input type="submit" value="Отправить">
@@ -162,11 +174,12 @@
         var wineAnswer = quizForm.elements['wine'].value;
         var coinsAnswer = quizForm.elements['coins'].value;
         var campAnswer = quizForm.elements['camp'].value;
+        var codeAnswer = quizForm.elements['code'].value;
 
-        if (wineAnswer === 'b' && coinsAnswer === 'c' && campAnswer === 'a') {
+        if (wineAnswer === 'b' && coinsAnswer === 'c' && campAnswer === 'a' && codeAnswer === '89176001064') {
             document.getElementById('result-link').style.display = 'block';
         } else {
-            alert('Пожалуйста, выберите правильные ответы.');
+            alert('Пожалуйста, выберите правильные ответы и введите корректное кодовое слово.');
         }
 
         return false; // Отменяет отправку формы
