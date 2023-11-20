@@ -1,23 +1,177 @@
-<html lang="ru">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>HTML5. Базовый шаблон для любого проекта</title>
-  <meta name="description" content="Шаблон HTML5 для любого проекта">
-  <meta name="author" content="Кодер">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://кодер.укр/">
-  <meta property="og:description" content="Шаблон HTML5 для любого проекта">
-  <meta property="og:image" content="image.png">
-  <link rel="icon" href="/favicon.ico">
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-  <link rel="stylesheet" href="css/styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        .question {
+            margin-bottom: 20px;
+        }
+
+        .options label {
+            display: block;
+            margin-bottom: 12px;
+            cursor: pointer;
+        }
+
+        .options input[type="radio"] {
+            opacity: 0;
+            position: absolute;
+        }
+
+        .options span {
+            position: relative;
+            padding-left: 35px;
+            font-size: 16px;
+            line-height: 1.5;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        .options span::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
+            border: 2px solid #4caf50;
+            border-radius: 50%;
+            background-color: #fff;
+            box-sizing: border-box;
+            margin-right: 10px;
+        }
+
+        .options input[type="radio"]:checked + span::before {
+            background-color: #4caf50;
+            border-color: #4caf50;
+        }
+
+        input[type="submit"] {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        #result-link {
+            display: none;
+            margin-top: 20px;
+            color: #333;
+        }
+    </style>
+    <title>Ваш тест</title>
 </head>
 <body>
-<div id="my-store-211223052"></div>
-<div>
-<script data-cfasync="false" type="text/javascript" src="https://app129488.ecwid.qa/script.js?211223052&data_platform=code&data_date=2023-11-14" charset="utf-8"></script><script type="text/javascript"> xProductBrowser("categoriesPerRow=3","views=grid(20,3) list(60) table(60)","categoryView=grid","searchView=list","id=my-store-211223052");</script>
+
+<div class="container">
+    <h2>Тада-да-дам! У кого сегодня праздник? Праавильно! У самого милого и энергичного человека в мире) А еще у моего лучшего друга, который любит квизы. Прямо здесь лежит твой подарочек. Он совсем рядом, но всё было бы силшком просто и неинтересно, поэтому тебе нужно пройти небольшой тест)))</h2>
+    
+    <form id="quizForm" action="javascript:void(0);" onsubmit="checkResults();">
+        <div class="question">
+            <p>1. На втором курсе мы смотрели фильм у тебя дома на Камышке и пили вино. Кажется, это было 8-10 января. Какое вино мы пили?</p>
+            <div class="options">
+                <label>
+                    <input type="radio" name="wine" value="a">
+                    <span>Белое</span>
+                </label>
+                <label>
+                    <input type="radio" name="wine" value="b">
+                    <span>Красное</span>
+                </label>
+                <label>
+                    <input type="radio" name="wine" value="c">
+                    <span>Игристое</span>
+                </label>
+            </div>
+        </div>
+
+        <div class="question">
+            <p>2. Какие монетки мы давили трамваями?</p>
+            <div class="options">
+                <label>
+                    <input type="radio" name="coins" value="a">
+                    <span>Копейки</span>
+                </label>
+                <label>
+                    <input type="radio" name="coins" value="b">
+                    <span>Рубли</span>
+                </label>
+                <label>
+                    <input type="radio" name="coins" value="c">
+                    <span>Копейки и рубли</span>
+                </label>
+            </div>
+        </div>
+
+        <div class="question">
+            <p>3. Где ты увидела информацию о наборе в лагерь вожатыми?</p>
+            <div class="options">
+                <label>
+                    <input type="radio" name="camp" value="a">
+                    <span>На странице местного блогера</span>
+                </label>
+                <label>
+                    <input type="radio" name="camp" value="b">
+                    <span>На странице группы УлГУ</span>
+                </label>
+                <label>
+                    <input type="radio" name="camp" value="c">
+                    <span>На странице нашей главной вожатой (вроде Наталья)</span>
+                </label>
+            </div>
+        </div>
+
+        <input type="submit" value="Отправить">
+    </form>
+
+    <div id="result-link">
+        <p>Ураа, тест пройден. Твой подарок: <a href="https://drive.google.com/file/d/1FmX32lTBEapwwvU9biUvjGReLi0LBjQF/view?usp=sharing" target="_blank">Ссылка</a></p>
+    </div>
 </div>
+
+<script>
+    function checkResults() {
+        var quizForm = document.getElementById('quizForm');
+        var wineAnswer = quizForm.elements['wine'].value;
+        var coinsAnswer = quizForm.elements['coins'].value;
+        var campAnswer = quizForm.elements['camp'].value;
+
+        if (wineAnswer === 'b' && coinsAnswer === 'c' && campAnswer === 'a') {
+            document.getElementById('result-link').style.display = 'block';
+        } else {
+            alert('Пожалуйста, выберите правильные ответы.');
+        }
+
+        return false; // Отменяет отправку формы
+    }
+</script>
+
 </body>
 </html>
